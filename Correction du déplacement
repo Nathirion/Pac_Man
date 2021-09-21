@@ -1,0 +1,254 @@
+#include <iostream>
+#include <conio.h>
+using namespace std;
+
+#define limitex 30
+#define limitey 30
+
+
+int PACMANx = 2;
+int PACMANy = 1;
+
+
+bool INVICIBILITE = false;
+
+int FANTOMEx = 5;
+int FANTOMEy = 5;
+
+char Pacman = 'P';
+char Fantome = 'F';
+char Nourriture = 'N';
+
+int nourriture_a_x = 2;
+int nourriture_a_y = 2;
+
+int score = 0;
+
+int points = 0;
+
+char terrain[limitex][limitey] = {
+        "|__________________________|\n",
+        "|                          |\n",
+        "|                          |\n",
+        "|                          |\n",
+        "|                          |\n",
+        "|                          |\n",
+        "|                          |\n",
+        "|                          |\n",
+        "|__________________________|"
+
+};
+
+
+
+
+
+
+
+class jeu {
+public:
+
+};
+
+
+void Afficher(int x,int y, int a, int b )
+{
+    int i=0;
+    int j=0;
+    int z=0;
+
+
+    for(i=0;i<limitey;i++)
+    {
+        for(j=0;j<limitey;j++)
+        {
+            if (i==x && j==y)
+                cout<<("%c",Pacman);
+            if (i==a && j==b)
+                cout<<("%c",Fantome);
+
+            if (i == nourriture_a_x && j == nourriture_a_y)
+                cout<<("%c",Nourriture);
+
+
+                else{
+
+                z+=z;
+                cout<<("%c",terrain[i][j]);
+                if(z==30){
+                    cout<<("\n");
+                    z=0;
+                }
+
+                 }
+
+
+
+
+        }
+
+
+
+
+    }
+
+}
+
+
+void Fant()
+{
+    FANTOMEx = rand()%3;
+    FANTOMEy = rand()%3;
+}
+
+void Score()
+{
+    if(PACMANx == nourriture_a_x && PACMANy == nourriture_a_y)
+        score += 1;
+}
+
+void invincibletime()
+{
+
+        for(int i =0;i<15;i++){
+            INVICIBILITE = true;
+
+        }
+
+}
+
+class personnage {
+public:
+    void deplacement(char sens){
+        switch(sens){
+        while((PACMANx>=0)&&(PACMANx<=limitex)&&(PACMANy>=0)&&(PACMANy<=limitey)){
+         case 'R':{PACMANy+=1;break;}
+         case 'L':{PACMANy-=1;break;}
+         case 'F':{PACMANx+=1;break;}
+         case 'B':{PACMANx-=1;break;}
+         default:{break;}
+        }
+        }
+
+    }
+
+
+
+private:
+    char sens;
+};
+
+class nourriture {
+public:
+    void manger(char* aliments){
+
+        if(aliments=="pac_gommes"){
+            points += 1;
+        }
+        if(aliments=="superpac_gommes"){
+            invincibletime();
+
+            //fantome : INVINCIBILITE = FALSE puis gestion de compteur pour revenir à l'état initial.
+
+        }
+        if(aliments=="pacman"){
+            //Game-Over;
+        }
+
+        if(aliments=="Fantôme"){
+            //fantome disparait
+        }
+    }
+
+
+
+
+};
+
+
+int main()
+{
+
+
+
+    for(int i=0;i<10;i++){
+
+
+
+        personnage pacman;
+        nourriture pac_gommes;
+        nourriture superpac_gommes;
+
+        //Terrain_AFFICH();
+
+
+
+
+        while (PACMANy >=0 && PACMANx >= 0) {
+            //touche = getchar();
+            switch (getch()) {
+                case 'z':
+                    pacman.deplacement('B');
+                    /*cout<< "DEVANT";
+                    cout<< PACMANy;*/
+                    Fant();
+                    Afficher(PACMANx,PACMANy,FANTOMEx,FANTOMEy);
+                    cout<< score;
+
+                    break;
+
+                case 'q':
+                    pacman.deplacement('L');
+                    /*cout<< "GAUCHE";
+                    cout<< PACMANx;*/
+                    Fant();
+                    Afficher(PACMANx,PACMANy,FANTOMEx,FANTOMEy);
+                    cout<< score;
+
+                    break;
+
+                case 'd':
+                    pacman.deplacement('R');
+                    /*cout<< "DROITE";
+                    cout<< PACMANx;*/
+
+                    Fant();
+                    Afficher(PACMANx,PACMANy,FANTOMEx,FANTOMEy);
+                    cout<< score;
+
+                    break;
+
+                case 's':
+                    pacman.deplacement('F');
+                    /*cout<< "ARRIERE";
+                    cout<< PACMANy;*/
+
+                    Fant();
+                    Afficher(PACMANx,PACMANy,FANTOMEx,FANTOMEy);
+                    cout<< score;
+
+                    break;
+
+
+
+            }
+
+
+
+        }
+    }
+
+    //jeu terrain;
+
+
+
+    return 0;
+}
+
+
+
+//Personnage --> PAC-MAN ,FANTOMES,
+
+//Nourriture --> PAC-GOMMES, SUPER PAC-GOMMES
+
+//JEU -->
