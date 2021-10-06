@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/nathirion/CLionProjects/Jeu/game.h
+
+/Users/nathirion/CLionProjects/Jeu/main.cpp
+iostream
+-
+personnage.h
+/Users/nathirion/CLionProjects/Jeu/personnage.h
+game.h
+/Users/nathirion/CLionProjects/Jeu/game.h
+nourriture.h
+/Users/nathirion/CLionProjects/Jeu/nourriture.h
+
+/Users/nathirion/CLionProjects/Jeu/nourriture.h
+
+/Users/nathirion/CLionProjects/Jeu/personnage.cpp
+personnage.h
+/Users/nathirion/CLionProjects/Jeu/personnage.h
+
+/Users/nathirion/CLionProjects/Jeu/personnage.h
+
